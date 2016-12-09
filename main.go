@@ -54,10 +54,7 @@ func main() {
 		testDuration := time.Since(start)
 		uptime := (float64(numSuccessful) / float64(numRequests)) * float64(100)
 		buf := make([]byte, numBodyBytes)
-		_, err = resp.Body.Read(buf)
-		if err != nil {
-			log.Fatalln("An error occurred reading the body:", err)
-		}
+		resp.Body.Read(buf)
 
 		goterm.Clear()
 		goterm.MoveCursor(1, 1)
